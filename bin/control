@@ -33,11 +33,13 @@ function waitondeployments() {
       client_message "Timed out waiting for management listening port"
       client_message "Could not connect to WildFly management interface, skipping deployment verification"
 #
-    fi 
-# https://github.com/christinalau/apiman-cartridge/commit/c6cf4d9a57c7345eee4061f2fe3b327b03aa95e5   
+# https://github.com/christinalau/apiman-cartridge/commit/c6cf4d9a57c7345eee4061f2fe3b327b03aa95e5
+    else
+# 
 # Christina: Ignore this for now since it didn't work and took a long time
 #   else
-#      getscanconfig
+#     getscanconfig
+#
       if [ "$SCANCONFIG" == "" ]; then
         client_message "Could not connect to WildFly management interface, skipping deployment verification"
       elif [[ $SCANCONFIG =~ '"scan-enabled" => true' ]]; then
