@@ -3,7 +3,7 @@ Cartridge-Short-Name: WILDFLY
 Display-Name: Apiman 1.2 on WildFly 10.1
 Description: "Apiman 1.2.9.Final (http://www.apiman.io) on WildFly 10.1.0.Final (http://wildfly.org/)"
 Version: '10'
-Source-Url: https://github.com/download/openshift-apiman-wildfly-cartridge/archive/wildfly-10.zip
+Source-Url: https://github.com/download/openshift-apiman-wildfly-cartridge/archive/master.zip
 License: LGPL
 License-Url: http://www.gnu.org/copyleft/lesser.txt
 Vendor: JBoss
