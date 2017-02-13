@@ -635,16 +635,7 @@
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:weld:3.0"/>
         <subsystem xmlns="urn:jboss:domain:keycloak-server:1.1">
-            <web-context>auth</web-context>
-            <spi name="connectionsJpa">
-                <provider name="default" enabled="true">
-                    <properties>
-                        <property name="dataSource" value="java:jboss/datasources/KeycloakDS"/>
-                        <property name="initializeEmpty" value="true"/>
-                        <property name="migrationStrategy" value="update"/>
-                    </properties>
-                </provider>
-            </spi>
+          <web-context>auth</web-context>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:keycloak:1.1">
           <realm name="apiman">
