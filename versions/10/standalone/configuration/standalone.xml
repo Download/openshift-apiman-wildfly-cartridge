@@ -562,7 +562,7 @@
                 <host name="default-host" alias="localhost">
                     <location name="/" handler="welcome-content" />
                     <filter-ref name="server-header"/>
-                    <filter-ref name="gzipFilter" predicate="exists['%{o,Content-Type}'] and regex[pattern='(?:application/javascript|text/css|text/html|text/javascript|text/xml|application/json)(;.*)?', value=%{o,Content-Type}, full-match=true]"/>
+                    <filter-ref name="gzipFilter" predicate="exists('%{o,Content-Type}') and regex(pattern='(?:application/javascript|text/css|text/html|text/javascript|text/xml|application/json)(;.*)?', value=%{o,Content-Type}, full-match=true)"/>
                     <filter-ref name="Vary-header"/>
                 </host>
             </server>
