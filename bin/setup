@@ -7,12 +7,21 @@ esac
 
 # Create additional directories required by JBOSSAS
 mkdir -p ${OPENSHIFT_HOMEDIR}/.m2
-mkdir -p ${OPENSHIFT_WILDFLY_DIR}/{template,standalone/tmp,standalone/deployments,standalone/configuration,standalone/log,standalone/data}
+mkdir -p ${OPENSHIFT_WILDFLY_DIR}/{template,standalone/tmp,standalone/deployments,standalone/configuration,standalone/log}
+
+# Create additional directories required by Apiman
+mkdir -p ${OPENSHIFT_WILDFLY_DIR}/{apiman,modules/system/add-ons/keycloak,standalone/data/bootstrap,themes}
 
 # Copy the version specific files up to jbossas directory
 cp -r ${OPENSHIFT_WILDFLY_DIR}versions/${version}/standalone/configuration/* ${OPENSHIFT_WILDFLY_DIR}standalone/configuration
 cp -r ${OPENSHIFT_WILDFLY_DIR}versions/${version}/bin/* ${OPENSHIFT_WILDFLY_DIR}/bin
 cp -r ${OPENSHIFT_WILDFLY_DIR}versions/${version}/* ${OPENSHIFT_WILDFLY_DIR}/
+
+# Copy the Apiman files up to jbossas directory
+cp -R ${OPENSHIFT_WILDFLY_DIR}versions/${version}/apiman/* ${OPENSHIFT_WILDFLY_DIR}apiman
+cp -R ${OPENSHIFT_WILDFLY_DIR}versions/${version}/standalone/data/bootstrap/* ${OPENSHIFT_WILDFLY_DIR}standalone/data/bootstrap
+cp -R ${OPENSHIFT_WILDFLY_DIR}versions/${version}/modules/system/add-ons/keycloak/* ${OPENSHIFT_WILDFLY_DIR}modules/system/add-ons/keycloak
+cp -R ${OPENSHIFT_WILDFLY_DIR}versions/${version}/themes/* ${OPENSHIFT_WILDFLY_DIR}themes
 
 # Initialize the JBoss CLI history file
 [ -f ${OPENSHIFT_HOMEDIR}/.jboss-cli-history ] || touch ${OPENSHIFT_HOMEDIR}/.jboss-cli-history
