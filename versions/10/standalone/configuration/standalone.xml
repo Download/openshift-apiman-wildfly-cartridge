@@ -341,17 +341,61 @@
                 </local-cache -->
             </cache-container>
 
-            <!-- cache-container name="keycloak" jndi-name="infinispan/Keycloak">
-                <local-cache name="realms"/>
-                <local-cache name="users"/>
-                <local-cache name="sessions"/>
-                <local-cache name="offlineSessions"/>
-                <local-cache name="loginFailures"/>
-                <local-cache name="work"/>
-                <local-cache name="realmVersions">
+            <cache-container name="keycloak" jndi-name="infinispan/Keycloak">
+                <transport lock-timeout="60000"/>
+
+                <distributed-cache name="realms" mode="ASYNC" l1-lifespan="0" owners="2">
+                    <locking isolation="REPEATABLE_READ"/>
+                    <transaction mode="BATCH"/>
+                    <file-store/>
+                </distributed-cache>
+                <!-- local-cache name="realms"/ -->
+
+                <distributed-cache name="users" mode="ASYNC" l1-lifespan="0" owners="2">
+                    <locking isolation="REPEATABLE_READ"/>
+                    <transaction mode="BATCH"/>
+                    <file-store/>
+                </distributed-cache>
+                <!-- local-cache name="users"/ -->
+
+                <distributed-cache name="sessions" mode="ASYNC" l1-lifespan="0" owners="2">
+                    <locking isolation="REPEATABLE_READ"/>
+                    <transaction mode="BATCH"/>
+                    <file-store/>
+                </distributed-cache>
+                <!-- local-cache name="sessions"/ -->
+
+                <distributed-cache name="offlineSessions" mode="ASYNC" l1-lifespan="0" owners="2">
+                    <locking isolation="REPEATABLE_READ"/>
+                    <transaction mode="BATCH"/>
+                    <file-store/>
+                </distributed-cache>
+                <!-- local-cache name="offlineSessions"/ -->
+
+                <distributed-cache name="loginFailures" mode="ASYNC" l1-lifespan="0" owners="2">
+                    <locking isolation="REPEATABLE_READ"/>
+                    <transaction mode="BATCH"/>
+                    <file-store/>
+                </distributed-cache>
+                <!-- local-cache name="loginFailures"/ -->
+
+                <distributed-cache name="work" mode="ASYNC" l1-lifespan="0" owners="2">
+                    <locking isolation="REPEATABLE_READ"/>
+                    <transaction mode="BATCH"/>
+                    <file-store/>
+                </distributed-cache>
+                <!-- local-cache name="work"/ -->
+
+                <distributed-cache name="realmVersions" mode="ASYNC" l1-lifespan="0" owners="2">
+                    <locking isolation="REPEATABLE_READ"/>
+                    <transaction mode="BATCH" />
+                    <file-store/>
+                </distributed-cache>
+                <!-- local-cache name="realmVersions">
                     <transaction mode="BATCH" locking="PESSIMISTIC"/>
-                </local-cache>
-            </cache-container -->
+                </local-cache -->
+            </cache-container>
+
             <cache-container name="server" aliases="singleton cluster" default-cache="default" module="org.wildfly.clustering.server">
                 <transport lock-timeout="60000"/>
                 <replicated-cache name="default" mode="SYNC">
