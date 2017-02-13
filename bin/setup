@@ -20,6 +20,7 @@ cp -r ${OPENSHIFT_WILDFLY_DIR}versions/${version}/* ${OPENSHIFT_WILDFLY_DIR}/
 # Copy the Apiman files up to jbossas directory
 cp -R ${OPENSHIFT_WILDFLY_DIR}versions/${version}/apiman/* ${OPENSHIFT_WILDFLY_DIR}apiman
 cp -R ${OPENSHIFT_WILDFLY_DIR}versions/${version}/standalone/data/bootstrap/* ${OPENSHIFT_WILDFLY_DIR}standalone/data/bootstrap
+cp -R ${OPENSHIFT_WILDFLY_DIR}versions/${version}/standalone/deployments/* ${OPENSHIFT_WILDFLY_DIR}standalone/deployments
 cp -R ${OPENSHIFT_WILDFLY_DIR}versions/${version}/modules/system/add-ons/keycloak/* ${OPENSHIFT_WILDFLY_DIR}modules/system/add-ons/keycloak
 cp -R ${OPENSHIFT_WILDFLY_DIR}versions/${version}/themes/* ${OPENSHIFT_WILDFLY_DIR}themes
 
