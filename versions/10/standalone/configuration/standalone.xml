@@ -309,6 +309,8 @@
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:infinispan:4.0">
             <cache-container name="apiman" jndi-name="infinispan/apiman">
+                <transport lock-timeout="60000"/>
+
                 <!-- local-cache name="registry">
                     <file-store passivation="false" />
                 </local-cache -->
