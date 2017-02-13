@@ -558,6 +558,7 @@
                 <http-listener name="default" socket-binding="http" proxy-address-forwarding="true" redirect-socket="https" enable-http2="true"/>
                 <https-listener name="https" socket-binding="https" security-realm="UndertowRealm" enable-http2="true"/>
                 <host name="default-host" alias="localhost">
+                    <location name="/" handler="welcome-content" />
                     <filter-ref name="server-header"/>
                     <filter-ref name="gzipFilter" predicate="exists['%{o,Content-Type}'] and regex[pattern='(?:application/javascript|text/css|text/html|text/javascript|text/xml|application/json)(;.*)?', value=%{o,Content-Type}, full-match=true]"/>
                     <filter-ref name="Vary-header"/>
